@@ -2,15 +2,49 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>フリー素材配布</title>
+    <title>素材ライブラリ</title>
     <style>
-        body { font-family: -apple-system, sans-serif; background: #f5f5f7; display: flex; flex-direction: column; align-items: center; padding: 50px; }
+        body { font-family: -apple-system, sans-serif; background: #f5f5f7; display: flex; flex-direction: column; align-items: center; padding: 50px 20px 150px 20px; }
         h1 { color: #1d1d1f; margin-bottom: 30px; }
-        .container { width: 100%; max-width: 500px; display: flex; flex-direction: column; gap: 20px; }
-        .card { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: space-between; }
-        .name { font-weight: bold; font-size: 1.1em; color: #333; flex: 1; }
-        .dl-btn { background: #007aff; color: white; text-decoration: none; padding: 10px 20px; border-radius: 20px; font-weight: bold; margin-left: 10px; }
-        audio { width: 150px; }
+        .container { width: 100%; max-width: 600px; display: flex; flex-direction: column; gap: 20px; }
+        
+        /* 音源カード */
+        .card { background: white; padding: 20px 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; }
+        .name { font-weight: bold; font-size: 1.1em; color: #333; min-width: 100px; flex: 1; }
+        
+        /* 再生バーの幅を広げる */
+        audio { width: 220px; height: 40px; }
+        
+        .dl-btn { background: #007aff; color: white; text-decoration: none; padding: 10px 20px; border-radius: 20px; font-weight: bold; transition: 0.2s; }
+        .dl-btn:hover { background: #0056b3; }
+
+        /* フローティングYouTubeバー */
+        .bottom-bar-container {
+            position: fixed;
+            bottom: 25px;
+            width: 90%;
+            max-width: 480px;
+            z-index: 1000;
+        }
+        .bottom-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(15px);
+            padding: 15px 25px;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            border: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .open-btn { background: #000; color: white; text-decoration: none; padding: 10px 25px; border-radius: 20px; font-weight: bold; transition: 0.2s; }
+        .open-btn:hover { background: #333; transform: scale(1.05); }
+
+        /* スマホ向けの微調整 */
+        @media (max-width: 480px) {
+            audio { width: 100%; order: 3; } /* スマホではバーを下に回して幅いっぱいに */
+            .card { justify-content: space-between; }
+        }
     </style>
 </head>
 <body>
@@ -18,25 +52,40 @@
     <h1>素材ライブラリ</h1>
 
     <div class="container">
-        <!-- 1つ目：水の音 -->
+        <!-- 1：水の音 -->
         <div class="card">
             <div class="name">水の音</div>
             <audio controls src="https://github.com/yushin880/koukaonn/releases/download/v1.0/1.mp3"></audio>
             <a href="https://github.com/yushin880/koukaonn/releases/download/v1.0/1.mp3" download class="dl-btn">DL</a>
         </div>
 
-        <!-- 2つ目：朝の音 -->
+        <!-- 2：朝の音 -->
         <div class="card">
             <div class="name">朝の音1</div>
             <audio controls src="https://github.com/yushin880/koukaonn/releases/download/v1.0/2.mp3"></audio>
             <a href="https://github.com/yushin880/koukaonn/releases/download/v1.0/2.mp3" download class="dl-btn">DL</a>
         </div>
 
-        <!-- 3つ目：朝の音2（ここを追加！） -->
+        <!-- 3：朝の音2 -->
         <div class="card">
             <div class="name">朝の音2</div>
             <audio controls src="https://github.com/yushin880/koukaonn/releases/download/v1.0/3.mp3"></audio>
             <a href="https://github.com/yushin880/koukaonn/releases/download/v1.0/3.mp3" download class="dl-btn">DL</a>
+        </div>
+
+        <!-- 4：炭酸シュワシュワ音 -->
+        <div class="card">
+            <div class="name">炭酸の音</div>
+            <audio controls src="https://github.com/yushin880/koukaonn/releases/download/v1.0/4.mp3"></audio>
+            <a href="https://github.com/yushin880/koukaonn/releases/download/v1.0/4.mp3" download class="dl-btn">DL</a>
+        </div>
+    </div>
+
+    <!-- YouTubeバー -->
+    <div class="bottom-bar-container">
+        <div class="bottom-card">
+            <div class="name" style="font-size: 0.95em;">YouTube</div>
+            <a href="https://www.youtube.com/@YushinTheBattleCats" target="_blank" class="open-btn">開く</a>
         </div>
     </div>
 
